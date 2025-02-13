@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* *BASE STYLES*/
 
@@ -9,9 +7,8 @@ html {
 }
 
 body {
-  @apply bg-zink-900;
-  @apply text-zink-50;
-  @apply text-base;
+  @apply bg-neutral-100 text-gray-950 dark:bg-neutral-900 dark:text-gray-500 ;
+  font-family: 'Inter', sans-serif;
 }
 
 /* *COMPONENTS STYLES*/
