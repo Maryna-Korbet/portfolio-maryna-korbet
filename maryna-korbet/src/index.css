@@ -7,19 +7,34 @@ html {
 }
 
 body {
-  @apply bg-stone-50 text-zinc-900;
+  @apply text-base bg-stone-50 text-zinc-900 md:text-lg lg:text-xl;
   font-family: 'Inter', sans-serif;
 }
 
 /* *COMPONENTS STYLES*/
+
+/* ---Header--- */
 
 .logo {
   @apply transition-all duration-150 text-amber-300 hover:text-amber-400;
 }
 
 .menu-btn {
-  @apply grid w-10 h-10 transition-all duration-150 place-items-center rounded-xl ring-inset ring-1 bg-amber-300 hover:bg-amber-400 ring-amber-300 hover:ring-amber-400 backdrop-blur-2xl active:scale-x-95;
+  @apply grid w-10 h-10 transition-all duration-150 place-items-center rounded-xl ring-inset ring-1 bg-amber-300 hover:bg-amber-400 ring-amber-300 hover:ring-amber-400 backdrop-blur-2xl active:scale-x-95 md:hidden;
 }
 
+.contact {
+  @apply transition-all duration-150 text-amber-300 hover:text-amber-400;
+}
+
+/* ---Navbar--- */
+
+.navBar {
+  @apply flex items-center justify-center space-x-4;
+}
+
+.nav-link {
+  @apply transition-all duration-150 text-zinc-900 hover:text-amber-300;
+}
 
 /* *UTILITIES STYLES*/

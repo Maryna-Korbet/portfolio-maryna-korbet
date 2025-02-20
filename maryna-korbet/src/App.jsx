@@ -10,7 +10,6 @@ function App() {
   return (
     <>
       <Header />
-      <h1>MK</h1>
     </>
   )
 }
