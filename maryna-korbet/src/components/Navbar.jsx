@@ -1,6 +1,9 @@
+// Node modules //
 import { useRef } from "react";
+import PropTypes from "prop-types";
 
-const Navbar = () => {
+
+const Navbar = ({ openModal }) => {
     const lastActiveLink = useRef();
     const activeLink = useRef(null);
 
@@ -39,7 +42,7 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="navBar">
+        <nav className={"navBar" + openModal ? " active" : ""}>
             {navItems.map(({ label, link, className, ref, key }) => (
                 <a
                     key={key}
@@ -58,6 +61,10 @@ const Navbar = () => {
             ></div>
         </nav>
     )
+};
+
+Navbar.propTypes = {
+    openModal: PropTypes.bool.isRequired,
 };
 
 export default Navbar;
