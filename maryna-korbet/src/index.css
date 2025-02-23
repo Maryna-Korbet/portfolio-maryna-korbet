@@ -42,7 +42,11 @@ body {
 }
 
 .nav-link {
-  @apply items-center px-4 tracking-wide transition-all duration-150 h-9 text-zinc-900 hover:font-extrabold;
+  @apply items-center px-4 tracking-wide transition-all duration-150 h-9 text-zinc-900;
+}
+
+.nav-link:hover {
+  @apply rounded-lg opacity-80 bg-neutral-400 text-zinc-900;
 }
 
 .nav-link.active {

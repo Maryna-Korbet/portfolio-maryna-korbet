@@ -64,9 +64,7 @@ useEffect(() => {
                     ref={className === "nav-link active" ? lastActiveLink : null}
                     onClick={null}
                 >
-                    {className === 'nav-link active' ? <span className="mr-2">[</span> : null}
                     {label}
-                    {className === 'nav-link active' ? <span className="ml-2">]</span> : null}
                 </a>
             ))}
         </nav>
