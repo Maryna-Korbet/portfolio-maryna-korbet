@@ -29,6 +29,15 @@ const Navbar = ({ openModal }) => {
         }
     }, []);
 
+    window.addEventListener("resize", () => {
+        if (activeLink.current) {
+            activeLink.current.style.top = `${lastActiveLink.current.offsetTop}px`;
+            activeLink.current.style.left = `${lastActiveLink.current.offsetLeft}px`;
+            activeLink.current.style.width = `${lastActiveLink.current.offsetWidth}px`;
+            activeLink.current.style.height = `${lastActiveLink.current.offsetHeight}px`;
+        }
+    });
+
 
     const navItems = [
         {
