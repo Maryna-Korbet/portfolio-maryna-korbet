@@ -1,11 +1,24 @@
 // Node modules //
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 
 const Navbar = ({ openModal }) => {
     const lastActiveLink = useRef();
     const activeLink = useRef(null);
+
+    const initActiveLink = () => {
+    if (!lastActiveLink.current || !activeLink.current) return;
+
+    activeLink.current.style.top = `${lastActiveLink.current.offsetTop}px`;
+    activeLink.current.style.left = `${lastActiveLink.current.offsetLeft}px`;
+    activeLink.current.style.width = `${lastActiveLink.current.offsetWidth}px`;
+    activeLink.current.style.height = `${lastActiveLink.current.offsetHeight}px`;
+};
+
+useEffect(() => {
+    initActiveLink();
+}, []);
 
     const navItems = [
         {
@@ -42,23 +55,20 @@ const Navbar = ({ openModal }) => {
     ];
 
     return (
-        <nav className={"navBar" + openModal ? " active" : ""}>
-            {navItems.map(({ label, link, className, ref, key }) => (
+        <nav className={"navbar" + (openModal ? " active" : "")}>
+            {navItems.map(({ label, link, className, ref: lastActiveLink, key }) => (
                 <a
                     key={key}
                     href={link}
-                    className={className}
-                    ref={ref}
+                    className={`${className} ${className === "nav-link active" ? "active-box" : ""}`}
+                    ref={className === "nav-link active" ? lastActiveLink : null}
                     onClick={null}
                 >
+                    {className === 'nav-link active' ? <span className="mr-2">[</span> : null}
                     {label}
+                    {className === 'nav-link active' ? <span className="ml-2">]</span> : null}
                 </a>
             ))}
-
-            <div
-                className="active-box"
-                ref={activeLink}
-            ></div>
         </nav>
     )
 };
