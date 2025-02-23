@@ -7,18 +7,28 @@ const Navbar = ({ openModal }) => {
     const lastActiveLink = useRef();
     const activeLink = useRef(null);
 
-    const initActiveLink = () => {
-    if (!lastActiveLink.current || !activeLink.current) return;
+    const initActiveLink = (event) => {
+        if (lastActiveLink.current) {
+            lastActiveLink.current.classList.remove("active");
+        }
+        event.target.classList.add("active");
+        lastActiveLink.current = event.target;
+        
+        if (activeLink.current) {
+            activeLink.current.style.top = `${event.target.offsetTop}px`;
+            activeLink.current.style.left = `${event.target.offsetLeft}px`;
+            activeLink.current.style.width = `${event.target.offsetWidth}px`;
+            activeLink.current.style.height = `${event.target.offsetHeight}px`;
+        }
+    };
 
-    activeLink.current.style.top = `${lastActiveLink.current.offsetTop}px`;
-    activeLink.current.style.left = `${lastActiveLink.current.offsetLeft}px`;
-    activeLink.current.style.width = `${lastActiveLink.current.offsetWidth}px`;
-    activeLink.current.style.height = `${lastActiveLink.current.offsetHeight}px`;
-};
+    useEffect(() => {
+        const defaultActive = document.querySelector(".nav-link.active");
+        if (defaultActive) {
+            initActiveLink({ target: defaultActive });
+        }
+    }, []);
 
-useEffect(() => {
-    initActiveLink();
-}, []);
 
     const navItems = [
         {
@@ -62,11 +72,12 @@ useEffect(() => {
                     href={link}
                     className={`${className} ${className === "nav-link active" ? "active-box" : ""}`}
                     ref={className === "nav-link active" ? lastActiveLink : null}
-                    onClick={null}
+                    onClick={initActiveLink}
                 >
                     {label}
                 </a>
             ))}
+            <span ref={activeLink} className="active-box"></span>
         </nav>
     )
 };
