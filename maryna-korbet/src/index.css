@@ -28,34 +28,35 @@ body {
 }
 
 .contactme {
-  @apply transition-all duration-150 text-amber-300 hover:text-amber-400 sm:hidden md:block ;
+  @apply transition-all duration-150 text-amber-300 hover:text-amber-400 sm:hidden md:block;
 }
 
 /* ---Navbar--- */
 
 .navbar {
-  @apply absolute right-0 z-10 invisible pt-10 space-x-4 transition-all duration-150 scale-90 opacity-100 md:mt-0 top-full min-w-40 bg-amber-300 rounded-2xl ring-1 ring-amber-300 isolate blur-sm ring-inset backdrop-blur-2xl;
-}
-
-.navbar {
-  @apply md:relative md:pl-8 md:pt-0 md:flex md:flex-row md:items-center md:justify-center md:mt-0 md:opacity-100 md:blur-none md:visible;
+  @apply absolute right-0 z-10 flex items-center justify-center invisible gap-4 pt-10 space-x-4 transition-all duration-150 scale-90 opacity-100 md:relative md:pl-4 md:pt-0 md:flex md:flex-row md:items-center md:justify-center md:mt-0 md:opacity-100 md:blur-none md:visible top-full min-w-40 bg-amber-300 rounded-2xl ring-1 ring-amber-300 isolate blur-sm ring-inset backdrop-blur-2xl;
 }
 
 .navbar.active {
-  @apply grid items-center justify-center visible text-sm font-medium scale-100 opacity-100 md:hidden blur-none ring-1 ring-amber-300;
+  @apply grid items-center justify-center visible text-sm font-medium scale-100 opacity-100 md:flex md:visible blur-none ring-1 ring-amber-300;
 }
 
 .nav-link {
   @apply flex items-center justify-start w-full px-4 my-0 tracking-wide transition-all duration-150 h-9 text-zinc-900;
+  @apply relative justify-center w-[120px] px-6 h-10 flex-shrink-0;
 }
 
 .nav-link.active {
-  @apply relative flex md:justify-center text-amber-400;
+  @apply relative flex md:justify-center;
 }
 
 .nav-link.active::before {
   content: "";
-  @apply absolute left-0 right-0 h-full transition-all duration-150 -translate-y-1/2 rounded-lg top-1/2 bg-neutral-500 -z-10;
+  @apply absolute inset-x-0 top-1/2 h-[80%] -translate-y-1/2 mx-auto w-[110px] rounded-lg ring-1 ring-neutral-500 -z-10 pointer-events-none;
+}
+
+.active-box:last-child {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -64,10 +65,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: auto;
   }
 
   .nav-link {
-    @apply px-5 py-2 text-sm;
+    @apply px-5 py-2 ml-auto mr-auto text-sm;
+  }
+
+  .nav-link:last-child {
+    display: none;
   }
 }
 
@@ -76,10 +82,11 @@ body {
     @apply flex-col items-center;
     display: flex;
     justify-content: flex-start;
+    padding-bottom: 24px;
   }
 
   .nav-link {
-    @apply mb-4;
+    @apply mb-4 ml-0 mr-0;
   }
 }
 
